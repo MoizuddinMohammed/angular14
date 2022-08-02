@@ -1,0 +1,47 @@
+<h1 style="font-weight: normal;">Welcome, Here is the marks list of Batch : <b>{{batch}}</b></h1>
+
+
+<table border=1>
+  <tr>
+    <td>ID</td>
+    <td>Name</td>
+    <td>D.O.B</td>
+    <td>Phone</td>
+    <td>Address</td>
+    <td>City</td>
+    <td>Hindi</td>
+    <td>English</td>
+    <td>M1</td>
+    <td>MM</td>
+    <td>Physics</td>
+    <td>Social</td>
+    <td>Total</td>
+    <td>Percentage</td>
+    <td>Status</td>
+    <td>Grade</td>
+  </tr>
+  <tr *ngFor="let stu of studentDetails;">
+    <td>{{stu.id}}</td>
+    <td>{{stu.name}}</td>
+    <td>{{stu.dob}}</td>
+    <td>{{stu.phone}}</td>
+    <td>{{stu.address}}</td>
+    <td>{{stu.city}}</td>
+    <td>{{stu.hindi}}</td>
+    <td>{{stu.english}}</td>
+    <td>{{stu.m1}}</td>
+    <td>{{stu.mm}}</td>
+    <td>{{stu.physics}}</td>
+    <td>{{stu.social}}</td>
+    <td>{{stu.total}}</td>
+    <td>{{stu.percentage}}%</td>
+    <td [ngClass]="{'pass_style': stu.status=='Pass','fail_style': stu.status=='Fail'}">{{stu.status}}</td>
+    <td>{{stu.grade}}</td>
+  </tr>
+  <tr>
+    <td style="text-align:center" colspan="8">Total no. of Pass Students: <b>{{total_pass}}</b></td>
+    <td style="text-align:center" colspan="8">Total no. of Fail Students: <b>{{studentDetails.length - total_pass}}</b></td>
+  </tr>
+</table>
+
+
