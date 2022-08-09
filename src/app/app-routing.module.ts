@@ -6,6 +6,7 @@ import { StudentsComponent } from './students/students.component';
 import { TablesComponent } from './tables/tables.component';
 
 const routes: Routes = [
+  {path:'',component:LoginComponent},
   {path:'login',component:LoginComponent},
   {path:'tables',component:TablesComponent},
   {path:'dashboard',component:DashboardComponent},
