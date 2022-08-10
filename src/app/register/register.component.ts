@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RegistrationsService } from '../registrations.service';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formbuilder: FormBuilder,
-    private router:Router
+    private router:Router,
+    private registrationsService:RegistrationsService
   ) { }
 
   ngOnInit(): void {
@@ -36,7 +38,28 @@ export class RegisterComponent implements OnInit {
     if(this.registerForm.invalid){
       return;
     }
-    this.router.navigate(['/','login']);
+    console.log("Original DATA::",this.registerForm.value);
+
+  //  let  reg={
+  //   registerForm:{
+  //     value:{
+  //       address:"addre",
+  //       name:"ram",
+  //       dob:"10=-10-2022"
+  //     }}}
+
+    let regObj={address: this.registerForm.value.address,
+    dob: this.registerForm.value.dob,
+    mobile: this.registerForm.value.mobile,
+    name: this.registerForm.value.name,
+    pincode: this.registerForm.value.pincode,
+    username:this.registerForm.value.username}
+    console.log("Modified DATA:::",regObj)
+    // this.registrationsService.listOfEmps=regObj;
+    this.registrationsService.listOfEmps.push(regObj);
+
+    console.log("Service DATA:::",this.registrationsService.listOfEmps)
+    // this.router.navigate(['/','login']);
   }
 
 }
