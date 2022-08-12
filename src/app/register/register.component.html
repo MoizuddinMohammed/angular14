@@ -34,7 +34,7 @@
                     <label for="floatingCPassword">Confirm Password</label>                                        
                     <div *ngIf="submitted && f.cpassword.errors" class="invalid-feedback">
                         <div *ngIf="f.cpassword.errors.required">Confirm Password is required</div>
-                        <div *ngIf="f.cpassword.errors.mustMatch">Passwords must match</div>
+                        <div *ngIf="f.cpassword.errors.confirmPasswordValidator">Passsword and Confirm Password didn't match.</div>
                     </div>
                 </div>
                 <div class="form-floating mb-3">

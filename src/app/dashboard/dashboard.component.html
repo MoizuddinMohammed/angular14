@@ -1,13 +1,24 @@
-{{SubjectTitle}}
-<table border=1>
-  <tr>
-    <td>ID</td>
-    <td>Subject</td>
-    <td>Subject Code</td>
-  </tr>
-  <tr *ngFor="let sub of Subjects">
-    <td>1</td>
-    <td>{{sub.name}}</td>
-    <td>{{sub.code}}</td>
-  </tr>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Basic Example</h2>
+      <p>Prinitng student details</p> 
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>Subject</td>
+            <td>Subject Code</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sub of Subjects">
+            <td>1</td>
+            <td>{{sub.name}}</td>
+            <td>{{sub.code}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
