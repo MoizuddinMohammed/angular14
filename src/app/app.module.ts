@@ -8,6 +8,10 @@ import { LoginComponent } from './login/login.component';
 import { TablesComponent } from './tables/tables.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StudentsComponent } from './students/students.component';
+import { RegisterComponent } from './register/register.component';
+import { EmployeesComponent } from './employees/employees.component';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './child/child.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { StudentsComponent } from './students/students.component';
     LoginComponent,
     TablesComponent,
     DashboardComponent,
-    StudentsComponent
+    StudentsComponent,
+    RegisterComponent,
+    EmployeesComponent,
+    ParentComponent,
+    ChildComponent
   ],
   imports: [
     BrowserModule,
