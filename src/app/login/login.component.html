@@ -1,32 +1,31 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-      <div class="card border-0 shadow rounded-3 my-5">
-        <div class="card-body p-4 p-sm-5">          
-          <h5 class="card-title text-center mb-5 fw-light fs-5">Sign In</h5>
-
-
-
+      <div class="card shadow my-5">
+        <h5 class="card-header fs-5 p-4">Sign In</h5>
+        <div class="card-body p-4 p-sm-5">
           <form [formGroup]="loginForm" >
             <!-- {{f.usr.errors | json}} -->
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" formControlName="usr" placeholder="Enter Email Address">
+              <input type="email" class="form-control" formControlName="usr" placeholder="Enter Email Address" [ngClass]="{'is-invalid': f.usr.errors && submitted}">
               <label for="floatingInput">Email address</label>
-              <div *ngIf="f.usr.errors.required && submitted" [ngClass]="{'text-danger':true}">Email is required</div>
+              <div *ngIf="submitted && f.usr.errors" class="invalid-feedback">
+                <div *ngIf="f.usr.errors.required">Email is required</div>
+                <div *ngIf="f.usr.errors.email">Enter a valid Email Address</div>
+              </div>              
             </div>
             <div class="form-floating mb-3">
-              <input type="password" class="form-control" formControlName="pwd" placeholder="Enter Password">
+              <input type="password" class="form-control" formControlName="pwd" placeholder="Enter Password"  [ngClass]="{'is-invalid': f.pwd.errors && submitted}">
               <label for="floatingPassword">Password</label>
-              <div *ngIf="f.pwd.errors.required && submitted" [ngClass]="{'text-danger':true}">Password is required</div>
+              <div *ngIf="submitted && f.pwd.errors" class="invalid-feedback">
+                <div *ngIf="f.pwd.errors.required">Password is required</div>
+              </div>
             </div>
             <div class="d-grid">
               <button class="btn btn-primary btn-login text-uppercase fw-bold" type="button" (click)="onSubmit()" >Login</button>
               <a class="btn btn-outline-primary btn-register text-uppercase fw-bold mt-3" href="/">Register</a>
             </div>
           </form>
-
-
-
         </div>
       </div>
     </div>

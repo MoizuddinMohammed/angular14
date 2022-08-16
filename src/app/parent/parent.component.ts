@@ -12,4 +12,5 @@ export class ParentComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  obj:any=[{name:"Moiz",dob:"20-12-1982"}];
 }
