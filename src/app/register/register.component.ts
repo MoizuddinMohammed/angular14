@@ -53,12 +53,14 @@ export class RegisterComponent implements OnInit {
   //       dob:"10=-10-2022"
   //     }}}
 
-    let regObj={address: this.registerForm.value.address,
-    dob: this.registerForm.value.dob,
-    mobile: this.registerForm.value.mobile,
-    name: this.registerForm.value.name,
-    pincode: this.registerForm.value.pincode,
-    username:this.registerForm.value.username}
+    let regObj={
+      address: this.registerForm.value.address,
+      dob: this.registerForm.value.dob,
+      mobile: this.registerForm.value.mobile,
+      name: this.registerForm.value.name,
+      pincode: this.registerForm.value.pincode,
+      username:this.registerForm.value.username
+  }
     //console.log("Modified DATA:::",regObj)
     // this.registrationsService.listOfEmps=regObj;
     this.registrationsService.listOfEmps.push(regObj);

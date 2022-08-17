@@ -14,6 +14,8 @@ import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { LeftComponent } from './left/left.component';
+import { RightComponent } from './right/right.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { HeaderComponent } from './header/header.component';
     ParentComponent,
     ChildComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    LeftComponent,
+    RightComponent
   ],
   imports: [
     BrowserModule,
