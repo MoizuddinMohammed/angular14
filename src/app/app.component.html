@@ -1,3 +1,11 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<app-header [menu]="menus"></app-header>
+<div class="container-fluid">
+    <div class="row">
+        <app-left [leftData]="menus" class="col border-end"></app-left>
+        <div class="col-sm-9">
+            <router-outlet></router-outlet>
+        </div>
+        <app-right [rightData]="menus" class="col border-start"></app-right>
+    </div>
+</div>
+<app-footer [footerData]="menus"></app-footer>

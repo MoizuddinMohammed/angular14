@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-md-10 mx-auto mt-5">
+        <div class="card">
+            <div class="card-header text-center">
+                <span>Chat Box</span>
+            </div>
+            <div class="card-body chat-care">
+                <ul class="chat">
+                    <li class="agent clearfix">
+                        <span class="chat-img left clearfix mx-2">
+                            <img src="https://via.placeholder.com/50/333333/808080%20?Text=R" alt="Agent" class="img-circle" />
+                        </span>
+                        <div class="chat-body clearfix">
+                            <div class="header clearfix">
+                                <strong class="primary-font">Jack Sparrow</strong> <small class="right text-muted">
+                                    <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="admin clearfix">
+                        <span class="chat-img right clearfix  mx-2">
+                            <img src="https://via.placeholder.com/50/666666/808080%20?Text=S" alt="Admin" class="img-circle" />
+                        </span>
+                        <div class="chat-body clearfix">
+                            <div class="header clearfix">
+                                <small class="left text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago</small>
+                                <strong class="right primary-font">Bhaumik Patel</strong>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                dolor, quis ullamcorper ligula sodales.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <form [formGroup]="chatForm" (ngSubmit)="senderMessage()" class="input-group mb-3">
+                    <input type="text" class="form-control" [ngClass]="{'border-danger': f.message.errors && submitted}" formControlName="message" placeholder="Type your message here...">
+                    <button class="btn btn-outline-secondary" [ngClass]="{'btn-outline-danger': f.message.errors && submitted}" type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,6 +4,7 @@
       <div class="card shadow my-5">
         <h5 class="card-header fs-5 p-4">Sign In</h5>
         <div class="card-body p-4 p-sm-5">
+          <p *ngIf="invalidMsg">Invalie creds</p>
           <form [formGroup]="loginForm" >
             <!-- {{f.usr.errors | json}} -->
             <div class="form-floating mb-3">
@@ -23,7 +24,7 @@
             </div>
             <div class="d-grid">
               <button class="btn btn-primary btn-login text-uppercase fw-bold" type="button" (click)="onSubmit()" >Login</button>
-              <a class="btn btn-outline-primary btn-register text-uppercase fw-bold mt-3" href="/">Register</a>
+              <a class="btn btn-outline-primary btn-register text-uppercase fw-bold mt-3" routerLink="/">Register</a>
             </div>
           </form>
         </div>

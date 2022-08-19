@@ -1,18 +1,12 @@
-<footer class="position-absolute bottom-0 w-100 py-2 mt-4 border-top">
+<footer class="bg-light position-fixed bottom-0 w-100 py-2 mt-4 border-top">
     <div class="container">
         <div class="row align-items-center">
-            <p class="col-md-5 mb-0 text-muted">© 2022 Angular 14</p>
+            <p class="col-md-5 mb-0 text-muted">{{footerData['footer-menu'].copyright}}</p>
             <div class="col-md-2">
-                <a routerLink="/" class="link-dark text-decoration-none">A<span class="text-danger">14</span></a>
+                <a routerLink="/" class="link-dark text-decoration-none" [innerHTML]="footerData['footer-menu'].brand"></a>
             </div>            
             <ul class="nav col-md-5 justify-content-end">
-                <li class="nav-item"><a class="nav-link px-2 text-muted" routerLink="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link px-2 text-muted" routerLink="/login">Login</a></li>
-                <li class="nav-item"><a class="nav-link px-2 text-muted" routerLink="/dashboard">Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link px-2 text-muted" routerLink="/parent">Parent</a></li>
-                <li class="nav-item"><a class="nav-link px-2 text-muted" routerLink="/child">Child</a></li>
-                <li class="nav-item"><a class="nav-link px-2 text-muted" routerLink="/students">Students</a></li>
-                <li class="nav-item"><a class="nav-link px-2 text-muted" routerLink="/tables">Tables</a></li>
+                <li class="nav-item" *ngFor="let m of footerData['footer-menu'].menu"><a class="nav-link px-2 text-muted" routerLink="{{m.link}}">{{m.name}}</a></li>
             </ul>
         </div>
     </div>    
