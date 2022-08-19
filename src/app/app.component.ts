@@ -7,20 +7,36 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'practice';
-  menuObj:any=[
-    {link:"/",name:"Home"},
-    {link:"/login",name:"Login"},
-    {link:"/dashboard",name:"Dashboard"},
-    {link:"/students",name:"Students"},
-  ];
   menus:any={
-    "header-menu":this.menuObj,
-    "left-menu":this.menuObj,
-    "right-menu":this.menuObj,
+    "header-menu":[
+      {link:"/",name:"Home"},
+      {link:"/login",name:"Login"},
+      {link:"/dashboard",name:"Dashboard"},
+      {link:"/students",name:"Students"},
+      {link:"/parent",name:"Parent"},
+      {link:"/child",name:"Child"},
+    ],
+    "left-menu":[
+      {link:"/dashboard",name:"Dashboard"},
+      {link:"/employees",name:"Employees"},
+      {link:"/students",name:"Students"},
+    ],
+    "right-menu":[
+      {link:"/students",name:"Students"},
+      {link:"/parent",name:"Parent"},
+      {link:"/child",name:"Child"},
+      {link:"/tables",name:"Tables"},
+    ],
     "footer-menu":{
       copyright: '© 2022 Angular 14',
       brand:'A<span class="text-danger">14</span>',
-      menu:this.menuObj
+      menu: [
+        {link:"/",name:"Home"},
+        {link:"/students",name:"Students"},
+        {link:"/parent",name:"Parent"},
+        {link:"/child",name:"Child"},
+        {link:"/tables",name:"Tables"},
+      ]
     },
     "body-content":{}
 }

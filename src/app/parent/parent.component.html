@@ -1,5 +1,9 @@
 <p>This is Parent!</p>
-<app-child parent="Am RAM" objData={{obj}}></app-child>
+<p>From Child Data:  {{p}}</p>
+<p>From Child Data:  {{p.name}}</p>
+<p>From Child Data:  {{p.mob}}</p>
+
+<app-child parent="Am RAM" [objData]="obj" (info)="receiveData($event)"></app-child>
 <div class="container">
     <div class="row">
         <div class="col-sm-12">

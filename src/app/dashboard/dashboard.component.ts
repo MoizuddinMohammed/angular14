@@ -9,6 +9,15 @@ export class DashboardComponent implements OnInit {
 
   constructor() { }
 
+  sData:any=[];
+  senderData(s:any){
+    console.log('Parent Data: ',s);
+    this.sData=s;
+    console.log('Parent Data2: ',this.sData);
+  }
+
+
+
 
 
   batch="LABS - 2022";
