@@ -23,14 +23,14 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.formbuilder.group({
-      name : ['', Validators.required],
+      name : ['', [Validators.required,Validators.pattern('^[a-zA-Z \-\']+')]],
       username : ['', [Validators.required,Validators.email]],
       password : ['', [Validators.required,Validators.minLength(6)]],
       cpassword : ['', [Validators.required]],
       dob : ['', [Validators.required]],
-      mobile : ['', [Validators.required]],
+      mobile : ['', [Validators.required,Validators.pattern('^[0-9 \-\']+')]],
       address : ['', [Validators.required]],
-      pincode : ['', [Validators.required,Validators.minLength(6),Validators.maxLength(6)]],
+      pincode : ['', [Validators.required,Validators.pattern('^[0-9\-\']+'),Validators.minLength(6),Validators.maxLength(6)]],
     }, {
         validator: ConfirmPasswordValidator('password', 'cpassword')
     });
@@ -44,14 +44,6 @@ export class RegisterComponent implements OnInit {
       return;
     }
     console.log("Original DATA::",this.registerForm.value);
-
-  //  let  reg={
-  //   registerForm:{
-  //     value:{
-  //       address:"addre",
-  //       name:"ram",
-  //       dob:"10=-10-2022"
-  //     }}}
 
     let regObj={
       address: this.registerForm.value.address,
@@ -68,5 +60,12 @@ export class RegisterComponent implements OnInit {
     //console.log("Service DATA:::",this.registrationsService.listOfEmps)
     this.router.navigate(['/','employees']);
   }
-
+  today:string=new Date().toISOString().slice(0,10);
+  numberOnly(event:any): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+  }
 }

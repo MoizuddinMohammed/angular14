@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      usr: ['', [Validators.required,Validators.email]],
-      pwd: ['', Validators.required]
+      username: ['', [Validators.required,Validators.email]],
+      password: ['', Validators.required]
     });
   }
 
@@ -43,8 +43,8 @@ export class LoginComponent implements OnInit {
       let data:any=[];
       data = d;  
       data.forEach((ele:any) => {
-        console.log(ele.uname);  
-        if(ele.uname===this.loginForm.value.usr && ele.pass===this.loginForm.value.pwd){
+        console.log(ele.username);  
+        if(ele.username===this.loginForm.value.username && ele.password===this.loginForm.value.password){
           this.router.navigate(['/','dashboard']);
         }else{
           this.invalidMsg=true;
