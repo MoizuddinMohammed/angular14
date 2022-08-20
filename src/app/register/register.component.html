@@ -13,6 +13,7 @@
                                 <label for="floatingName">Name</label>
                                 <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
                                     <div *ngIf="f.name.errors.required">Name is required</div>
+                                    <div *ngIf="f.name.errors.pattern">Enter only Alphabets</div>
                                 </div>
                             </div>
                         </div>
@@ -48,16 +49,17 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-floating">
-                                <input type="text" class="form-control" formControlName="mobile" placeholder="Enter Mobile Number" [ngClass]="{'is-invalid': f.mobile.errors && submitted}">
+                                <input type="text" class="form-control" formControlName="mobile" placeholder="Enter Mobile Number" maxlength="10" [ngClass]="{'is-invalid': f.mobile.errors && submitted}">
                                 <label for="floatingMobile">Mobile Number</label>                    
                                 <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
                                     <div *ngIf="f.mobile.errors.required">Mobile is required</div>
+                                    <div *ngIf="f.mobile.errors.pattern">Enter only numbers</div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-floating">
-                                <input type="date" class="form-control" formControlName="dob" placeholder="Enter your Date of Birth" [ngClass]="{'is-invalid': f.dob.errors && submitted}">
+                                <input type="date" class="form-control" formControlName="dob" placeholder="Enter your Date of Birth" max="{{today}}" [ngClass]="{'is-invalid': f.dob.errors && submitted}">
                                 <label for="floatingDob">Date of Birth</label>                    
                                 <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
                                     <div *ngIf="f.dob.errors.required">Date of Birth is required</div>
@@ -66,12 +68,13 @@
                         </div>
                         <div class="col-md-4">                
                             <div class="form-floating">
-                                <input type="text" class="form-control" formControlName="pincode"  placeholder="Enter your pincode" maxlength="6"  [ngClass]="{'is-invalid': f.pincode.errors && submitted}">
+                                <input type="text" class="form-control" formControlName="pincode"  placeholder="Enter your pincode" maxlength="6" [ngClass]="{'is-invalid': f.pincode.errors && submitted}">
                                 <label for="floatingPincode">Pincode</label>                    
                                 <div *ngIf="submitted && f.pincode.errors" class="invalid-feedback">
                                     <div *ngIf="f.pincode.errors.required">Pincode is required</div>
                                     <div *ngIf="f.pincode.errors.minlength">Pincode must have at least 4 characters.</div>
                                     <div *ngIf="f.pincode.errors.maxlength">Pincode must have at most 6 characters.</div>
+                                    <div *ngIf="f.pincode.errors.pattern">Pincode must have be only numbers.</div>
                                 </div>
                             </div>
                         </div>                    
