@@ -8,6 +8,7 @@ import { ParentComponent } from './parent/parent.component';
 import { RegisterComponent } from './register/register.component';
 import { StudentsComponent } from './students/students.component';
 import { TablesComponent } from './tables/tables.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   {path:'',component:RegisterComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'employees',component:EmployeesComponent},
   {path:'parent',component:ParentComponent},
   {path:'child',component:ChildComponent},
+  {path:'users',component:UsersComponent},
 ];
 
 @NgModule({

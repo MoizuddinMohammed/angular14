@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import {  HttpClientModule } from '@angular/common/http';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -18,6 +20,7 @@ import { HeaderComponent } from './header/header.component';
 import { LeftComponent } from './left/left.component';
 import { RightComponent } from './right/right.component';
 import { ChatComponent } from './chat/chat.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -34,13 +37,15 @@ import { ChatComponent } from './chat/chat.component';
     HeaderComponent,
     LeftComponent,
     RightComponent,
-    ChatComponent
+    ChatComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

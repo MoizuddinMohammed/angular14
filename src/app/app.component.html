@@ -2,10 +2,10 @@
 <div class="container-fluid">
     <div class="row">
         <app-left [leftData]="menus" class="col border-end"></app-left>
-        <div class="col-sm-9">
+        <div class="col-sm-10">
             <router-outlet></router-outlet>
         </div>
-        <app-right [rightData]="menus" class="col border-start"></app-right>
+        <!-- <app-right [rightData]="menus" class="col border-start"></app-right> -->
     </div>
 </div>
 <app-footer [footerData]="menus"></app-footer>
