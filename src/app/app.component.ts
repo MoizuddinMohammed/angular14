@@ -20,6 +20,7 @@ export class AppComponent {
       {link:"/dashboard",name:"Dashboard"},
       {link:"/employees",name:"Employees"},
       {link:"/students",name:"Students"},
+      {link:"/users",name:"Users"},
     ],
     "right-menu":[
       {link:"/students",name:"Students"},
