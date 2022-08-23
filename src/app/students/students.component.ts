@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-students',
@@ -7,41 +8,50 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   batch="LABS - 2022";
   sursh_id : any = '';
   studentMarkDetail : any =[
-    {id:1,name:'Arbaaz',dob:'12-09-1995',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:98,english:92,m1:95,mm:91,physics:95,social:88},
-    {id:2,name:'Laila',dob:'22-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:89,english:55,m1:88,mm:88,physics:72,social:99},
-    {id:3,name:'Riya',dob:'2-02-1995',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:91,english:90,m1:66,mm:88,physics:58,social:77},
-    {id:4,name:'Kartik',dob:'12-09-1995',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:56,english:55,m1:88,mm:88,physics:72,social:37},
-    {id:5,name:'Moni',dob:'21-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:56,english:55,m1:52,mm:41,physics:60,social:37},
-    {id:6,name:'Ravi',dob:'14-09-1995',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:48,english:42,m1:44,mm:53,physics:36,social:37},
-    {id:7,name:'James',dob:'16-01-1992',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:42,english:38,m1:45,mm:39,physics:36,social:37},
-    {id:8,name:'Rani',dob:'12-09-1995',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:29,english:75,m1:93,mm:88,physics:30,social:37},
-    {id:9,name:'Ayan',dob:'12-09-1995',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:98,english:92,m1:95,mm:91,physics:95,social:88},
-    {id:10,name:'Lewis',dob:'12-09-1995',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:89,english:55,m1:88,mm:88,physics:72,social:99},
-    {id:11,name:'Reena',dob:'12-09-1995',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:91,english:90,m1:66,mm:88,physics:58,social:77},
-    {id:12,name:'Kaylash',dob:'12-09-1995',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:56,english:55,m1:88,mm:88,physics:72,social:37},
-    {id:13,name:'Monika',dob:'12-09-1995',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:56,english:55,m1:52,mm:41,physics:60,social:37},
-    {id:14,name:'Kiran',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:48,english:42,m1:44,mm:53,physics:36,social:37},
-    {id:15,name:'John',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:42,english:38,m1:45,mm:39,physics:36,social:37},
-    {id:16,name:'Anya',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:29,english:75,m1:93,mm:88,physics:30,social:37},
-    {id:17,name:'Ajay',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:98,english:92,m1:95,mm:91,physics:95,social:88},
-    {id:18,name:'Laxman',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:89,english:55,m1:88,mm:88,physics:72,social:99},
-    {id:19,name:'Rahul',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:91,english:90,m1:66,mm:88,physics:58,social:77},
-    {id:20,name:'Kajol',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:56,english:55,m1:88,mm:88,physics:72,social:37},
-    {id:21,name:'Mahesh',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:56,english:55,m1:52,mm:41,physics:60,social:37},
-    {id:22,name:'Ronak',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:48,english:42,m1:44,mm:53,physics:36,social:37},
-    {id:23,name:'Jenni',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:42,english:38,m1:45,mm:39,physics:36,social:37},
-    {id:24,name:'Jasper',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:29,english:75,m1:93,mm:88,physics:30,social:37},
-    {id:25,name:'Paul',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:29,english:75,m1:93,mm:88,physics:30,social:37},
+    // {id:1,name:'Arbaaz',dob:'12-09-1995',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:98,english:92,m1:95,mm:91,physics:95,social:88},
+    // {id:2,name:'Laila',dob:'22-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:89,english:55,m1:88,mm:88,physics:72,social:99},
+    // {id:3,name:'Riya',dob:'2-02-1995',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:91,english:90,m1:66,mm:88,physics:58,social:77},
+    // {id:4,name:'Kartik',dob:'12-09-1995',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:56,english:55,m1:88,mm:88,physics:72,social:37},
+    // {id:5,name:'Moni',dob:'21-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:56,english:55,m1:52,mm:41,physics:60,social:37},
+    // {id:6,name:'Ravi',dob:'14-09-1995',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:48,english:42,m1:44,mm:53,physics:36,social:37},
+    // {id:7,name:'James',dob:'16-01-1992',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:42,english:38,m1:45,mm:39,physics:36,social:37},
+    // {id:8,name:'Rani',dob:'12-09-1995',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:29,english:75,m1:93,mm:88,physics:30,social:37},
+    // {id:9,name:'Ayan',dob:'12-09-1995',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:98,english:92,m1:95,mm:91,physics:95,social:88},
+    // {id:10,name:'Lewis',dob:'12-09-1995',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:89,english:55,m1:88,mm:88,physics:72,social:99},
+    // {id:11,name:'Reena',dob:'12-09-1995',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:91,english:90,m1:66,mm:88,physics:58,social:77},
+    // {id:12,name:'Kaylash',dob:'12-09-1995',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:56,english:55,m1:88,mm:88,physics:72,social:37},
+    // {id:13,name:'Monika',dob:'12-09-1995',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:56,english:55,m1:52,mm:41,physics:60,social:37},
+    // {id:14,name:'Kiran',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:48,english:42,m1:44,mm:53,physics:36,social:37},
+    // {id:15,name:'John',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:42,english:38,m1:45,mm:39,physics:36,social:37},
+    // {id:16,name:'Anya',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:29,english:75,m1:93,mm:88,physics:30,social:37},
+    // {id:17,name:'Ajay',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:98,english:92,m1:95,mm:91,physics:95,social:88},
+    // {id:18,name:'Laxman',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:89,english:55,m1:88,mm:88,physics:72,social:99},
+    // {id:19,name:'Rahul',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:91,english:90,m1:66,mm:88,physics:58,social:77},
+    // {id:20,name:'Kajol',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:56,english:55,m1:88,mm:88,physics:72,social:37},
+    // {id:21,name:'Mahesh',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:56,english:55,m1:52,mm:41,physics:60,social:37},
+    // {id:22,name:'Ronak',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:48,english:42,m1:44,mm:53,physics:36,social:37},
+    // {id:23,name:'Jenni',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:42,english:38,m1:45,mm:39,physics:36,social:37},
+    // {id:24,name:'Jasper',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:29,english:75,m1:93,mm:88,physics:30,social:37},
+    // {id:25,name:'Paul',dob:'12-09-1993',phone:'9874561230',address:'12-34-569, Sanjay Gandhi Nagar',city:'Hyderabad',hindi:29,english:75,m1:93,mm:88,physics:30,social:37},
   ];
+  getStudents(){    
+    return this.http.get('./assets/json/students.json');
+  }
   table:any=[];
   ngOnInit(): void {
     //alert('Loading');
-    this.testResult();
+    
+    this.getStudents().subscribe(res=>{
+      
+      this.studentMarkDetail=res;
+      //console.log('JSon Data',this.userData);
+      this.testResult();
+    });
   }
   studentDetails : any =[];
   total_pass : number = 0;
