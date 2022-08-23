@@ -21,6 +21,8 @@ import { LeftComponent } from './left/left.component';
 import { RightComponent } from './right/right.component';
 import { ChatComponent } from './chat/chat.component';
 import { UsersComponent } from './users/users.component';
+import { NewsComponent } from './news/news.component';
+import { NewsHeadlinesComponent } from './news-headlines/news-headlines.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { UsersComponent } from './users/users.component';
     LeftComponent,
     RightComponent,
     ChatComponent,
-    UsersComponent
+    UsersComponent,
+    NewsComponent,
+    NewsHeadlinesComponent
   ],
   imports: [
     BrowserModule,

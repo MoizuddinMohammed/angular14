@@ -1,0 +1,16 @@
+<div class="row g-4 my-5">
+    <div class="col-sm-4" *ngFor="let news of newsData.articles">
+        <div class="card h-100">
+            <img src="{{news.urlToImage}}" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title"><a href="{{news.url}}" target="_blank" class="text-decoration-none text-dark">{{news.title}}</a></h5>
+              <p class="card-text">{{news.content}}</p>
+              <a href="{{news.url}}" target="_blank" class="btn btn-primary">Read More</a>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted"><fa-icon [icon]="faUser"></fa-icon> {{news.author ? news.author : 'Admin'}}</small><br>
+                <small class="text-muted"><fa-icon [icon]="faClock"></fa-icon> {{news.publishedAt}}</small>
+            </div>
+        </div>
+    </div>
+</div>

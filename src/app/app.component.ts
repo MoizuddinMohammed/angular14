@@ -15,6 +15,8 @@ export class AppComponent {
       {link:"/students",name:"Students"},
       {link:"/parent",name:"Parent"},
       {link:"/child",name:"Child"},
+      {link:"/news",name:"News"},
+      {link:"/headlines",name:"Headlines"},
     ],
     "left-menu":[
       {link:"/dashboard",name:"Dashboard"},
