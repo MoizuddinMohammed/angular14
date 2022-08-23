@@ -24,6 +24,6 @@ export class UsersComponent implements OnInit {
   }
   getUsers(){    
     return this.http.get('./assets/json/users.json');
-  }
+  }  
 
 }
