@@ -13,6 +13,7 @@ export class NewsHeadlinesComponent implements OnInit {
   searchByCountry:any= FormGroup;
   searchByKeyWord:any= FormGroup;
   submitted:boolean=false;
+  submitted1:boolean=false;
 
   constructor(
     private fb: FormBuilder,
@@ -32,7 +33,7 @@ export class NewsHeadlinesComponent implements OnInit {
   get k(){return this.searchByKeyWord.controls};
   searchNewsByKeyWord(){
     console.log(this.searchByKeyWord);
-    this.submitted=true;
+    this.submitted1=true;
     if (this.searchByKeyWord.invalid) {
       return;
     }
@@ -41,7 +42,7 @@ export class NewsHeadlinesComponent implements OnInit {
       this.newsHeadlines=res;
     });
   }
-  /*searchNewsByCountry() {
+  searchNewsByCountry() {
     //console.log( "data api checking",this.getValidate());   
     console.log(this.searchByCountry);
     this.submitted=true;
@@ -52,12 +53,12 @@ export class NewsHeadlinesComponent implements OnInit {
       console.log('NEWS Headlines::::',res);
       this.newsHeadlines=res;
     });
-  }*/
+  }
   
   
   getNewsHeadlines(word:any,type:string){
     if(type=='keyword'){
-      return this.http.get(`https://newsapi.org/v2/everything?q=${word}&from=2022-07-23&sortBy=publishedAt&apiKey=${this.API_KEY}`);
+      return this.http.get(`https://newsapi.org/v2/everything?q=${word}&from=2022-08-24&sortBy=publishedAt&apiKey=${this.API_KEY}`);
     }else{
       return this.http.get(`https://newsapi.org/v2/top-headlines?country=${word}&category=business&apiKey=${this.API_KEY}`);
     }    
