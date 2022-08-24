@@ -31,6 +31,6 @@ export class NewsComponent implements OnInit {
   }  
   getNews(){
     // let url="https://newsapi.org/v2/everything?q=tesla&from=2022-07-23&sortBy=publishedAt&apiKey="+API_KEY;
-    return this.http.get(`https://newsapi.org/v2/everything?q=tesla&from=2022-08-23&sortBy=publishedAt&apiKey=${this.API_KEY}`);
+    return this.http.get(`https://newsapi.org/v2/everything?q=tesla&from=2022-08-24&sortBy=publishedAt&apiKey=${this.API_KEY}`);
   }
 }
