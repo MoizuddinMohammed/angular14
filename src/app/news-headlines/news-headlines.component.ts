@@ -9,58 +9,63 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class NewsHeadlinesComponent implements OnInit {
   API_KEY='0f42e442954946c2b0e430da03aa3ff7';
+  today:string=new Date().toISOString().slice(0,10);
   newsHeadlines:any=[];
-  searchByCountry:any= FormGroup;
   searchByKeyWord:any= FormGroup;
+  searchByDate:any= FormGroup;
   submitted:boolean=false;
-  submitted1:boolean=false;
-
+  keyword:string='top headlines';
+  date:string=this.today;
+  country:string='us';
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
   ) { }
 
   ngOnInit(): void {
-    this.searchByCountry = this.fb.group({
-      country: ['', [Validators.required]],
-    });
     this.searchByKeyWord = this.fb.group({
       keyword: ['', [Validators.required]],
     });
+    this.searchByDate = this.fb.group({
+      date: ['', [Validators.required]],
+    });
   }
-
-  get f(){return this.searchByCountry.controls};
+  sortByCountry(e:any) {
+    this.country=e.target.value;
+    this.getNewsHeadlines(this.country,this.date,'top-headlines').subscribe(res=>{
+      this.newsHeadlines=res;
+    });
+    console.log('Para', this.keyword, this.date,this.country);
+  }
+  sortByDate(e:any){
+    //console.log('Selected Date:::',e.target.value);
+    this.date=e.target.value;
+    this.getNewsHeadlines(this.keyword,this.date,'everything').subscribe(res=>{
+      this.newsHeadlines=res;
+    });
+    console.log('Para', this.keyword, this.date,this.country);
+  }
   get k(){return this.searchByKeyWord.controls};
+  get d(){return this.searchByDate.controls};
   searchNewsByKeyWord(){
-    console.log(this.searchByKeyWord);
-    this.submitted1=true;
+    //console.log(this.searchByKeyWord);
+    this.submitted=true;
     if (this.searchByKeyWord.invalid) {
       return;
     }
-    this.getNewsHeadlines(this.searchByKeyWord.value.keyword,'keyword').subscribe(res=>{      
+    this.keyword=this.searchByKeyWord.value.keyword;
+    this.getNewsHeadlines(this.keyword,this.date,'everything').subscribe(res=>{      
       console.log('NEWS Headlines::::',res);
       this.newsHeadlines=res;
     });
-  }
-  searchNewsByCountry() {
-    //console.log( "data api checking",this.getValidate());   
-    console.log(this.searchByCountry);
-    this.submitted=true;
-    if (this.searchByCountry.invalid) {
-      return;
-    }
-    this.getNewsHeadlines(this.searchByCountry.value.country,'country').subscribe(res=>{      
-      console.log('NEWS Headlines::::',res);
-      this.newsHeadlines=res;
-    });
+    console.log('Para', this.keyword, this.date,this.country);
   }
   
-  
-  getNewsHeadlines(word:any,type:string){
-    if(type=='keyword'){
-      return this.http.get(`https://newsapi.org/v2/everything?q=${word}&from=2022-08-24&sortBy=publishedAt&apiKey=${this.API_KEY}`);
+  getNewsHeadlines(data:any,date:any,type:string){
+    if(type=='everything'){
+      return this.http.get(`https://newsapi.org/v2/everything?q=${data}&to=${date}&sortBy=publishedAt&apiKey=${this.API_KEY}`);
     }else{
-      return this.http.get(`https://newsapi.org/v2/top-headlines?country=${word}&category=business&apiKey=${this.API_KEY}`);
+      return this.http.get(`https://newsapi.org/v2/top-headlines?country=${data}&category=business&apiKey=${this.API_KEY}`);
     }    
   } 
 }
