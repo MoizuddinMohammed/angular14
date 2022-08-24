@@ -11,6 +11,7 @@ import { faClock } from '@fortawesome/free-solid-svg-icons';
 export class NewsComponent implements OnInit {
   faUser = faUser;
   faClock=faClock;
+  today:string=new Date().toISOString().slice(0,10);
 
   constructor(private http: HttpClient) { }
   newsData:any=[];
@@ -31,6 +32,6 @@ export class NewsComponent implements OnInit {
   }  
   getNews(){
     // let url="https://newsapi.org/v2/everything?q=tesla&from=2022-07-23&sortBy=publishedAt&apiKey="+API_KEY;
-    return this.http.get(`https://newsapi.org/v2/everything?q=tesla&from=2022-08-24&sortBy=publishedAt&apiKey=${this.API_KEY}`);
+    return this.http.get(`https://newsapi.org/v2/everything?q=tesla&from=${this.today}&sortBy=popularity&apiKey=${this.API_KEY}`);
   }
 }
