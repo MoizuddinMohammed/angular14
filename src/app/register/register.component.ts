@@ -56,7 +56,9 @@ export class RegisterComponent implements OnInit {
     //console.log("Modified DATA:::",regObj)
     // this.registrationsService.listOfEmps=regObj;
     this.registrationsService.listOfEmps.push(regObj);
-
+    this.registrationsService.saveUserData(this.registerForm.value).subscribe(res=>{      
+      console.log('Data Added::::',res);      
+    });
     //console.log("Service DATA:::",this.registrationsService.listOfEmps)
     this.router.navigate(['/','employees']);
   }
