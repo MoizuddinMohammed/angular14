@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
     console.log("aaaa");
-    //     this.subject.next("1");
+    // this.subject.next("1");
     // this.subject.next("1");
     // this.subject.next("1");
     // this.subject.next("1");
@@ -80,7 +80,29 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.invalidMsg=false;
-    this.getValidate().subscribe(d=>{    
+    console.log('1111....');
+    this.registrationsService.getUsers().subscribe(u=>{
+      let users:any=[];
+      users = u;
+      console.log('subscrive....',users.length);
+      if(users.length>0){
+        console.log('subscrive....',users.length);
+        users.forEach((user:any) => {
+          console.log('Users....',user.username);
+          if(user.username===this.loginForm.value.username && user.password===this.loginForm.value.password){
+            console.log('Registered User::',user.username);
+            this.registrationsService.setData(user.name);
+            this.router.navigate(['/','dashboard']);
+          }else{
+            this.invalidMsg=true;
+          } 
+        });  
+      }else{
+        this.invalidMsg=true;
+      }
+    });
+
+    /*this.getValidate().subscribe(d=>{    
       let data:any=[];
       data = d;  
       data.forEach((ele:any) => {
@@ -91,14 +113,14 @@ export class LoginComponent implements OnInit {
           this.invalidMsg=true;
         }       
       });  
-    })
+    })*/
     // this.router.navigate(['/','dashboard']);
   }
   getValidate(){
     return this.http.get('./assets/json/creds.json');
   }
-  sendData(){
+  /*sendData(){
     console.log("sending data!!!!");
     this.registrationsService.setData("Rama")
-  }
+  }*/
 }

@@ -1,26 +1,15 @@
 {
   "users": [
     {
-      "name": "qwqwq",
-      "username": "ssa@h.c",
-      "password": "12345678",
-      "cpassword": "12345678",
-      "dob": "2022-08-09",
-      "mobile": "1111111111",
-      "address": "ssdddsd",
-      "pincode": "121111",
+      "name": "Mohammed Moizuddin",
+      "username": "arbaazvillianz.av@gmail.com",
+      "password": "123456789",
+      "cpassword": "123456789",
+      "dob": "2022-08-02",
+      "mobile": "8801372316",
+      "address": "1-2-3/Sanjay ",
+      "pincode": "500036",
       "id": 1
-    },
-    {
-      "name": "Mohd",
-      "username": "arb@gmail.com",
-      "password": "123456",
-      "cpassword": "123456",
-      "dob": "2022-08-23",
-      "mobile": "9876543210",
-      "address": "12211",
-      "pincode": "500000",
-      "id": 2
     }
   ]
 }
