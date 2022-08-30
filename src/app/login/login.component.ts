@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { AsyncSubject, BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
+import { RegistrationsService } from '../registrations.service';
 
 @Component({
   selector: 'app-login',
@@ -13,21 +15,60 @@ export class LoginComponent implements OnInit {
   submitted:boolean=false;
   invalidMsg:boolean=false;
 
+  subject:any=new Subject();
+  subjectRep:any=new ReplaySubject<any>();
+  subjectB:any=new BehaviorSubject<any>(null);
+  subjectAsync:any=new AsyncSubject<any>();
+
   constructor(
     private fb: FormBuilder,
     private router:Router,
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    private registrationsService: RegistrationsService,
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required,Validators.email]],
       password: ['', Validators.required]
     });
-  }
+    console.log("aaaa");
+    //     this.subject.next("1");
+    // this.subject.next("1");
+    // this.subject.next("1");
+    // this.subject.next("1");
+    // console.log("Subjects::::",this.subject)
+    // this.subject.subscribe((data:any)=>{
+    //   console.log("ssssssssssssss",data);
+    // })
 
-  get f(){return this.loginForm.controls}
-  
+    this.subject.subscribe((val:any) => {
+      console.log("Subjects:::",val);
+    });
+
+    this.subjectRep.subscribe((val:any) => {
+      console.log("Replay Subjects1:::",val);
+    });
+    this.subjectRep.next("1");
+
+    this.subjectRep.subscribe((val:any) => {
+      console.log("Replay Subjects2:::",val);
+    });
+
+    this.subject.next("1");
+    this.subject.next("2");
+    this.subject.next("3");
+    this.subject.next("4");
+    this.subject.next("5");
+    this.subject.next("6");
+    this.subject.next("7");
+    // this.subject.complete();
+
+
+    this.subjectRep.next("2");
+    this.subjectRep.next("3");
+  }
+  get f(){return this.loginForm.controls}  
   goToTables(){
     this.router.navigate(['/','tables']);
   }
@@ -55,5 +96,9 @@ export class LoginComponent implements OnInit {
   }
   getValidate(){
     return this.http.get('./assets/json/creds.json');
+  }
+  sendData(){
+    console.log("sending data!!!!");
+    this.registrationsService.setData("Rama")
   }
 }
