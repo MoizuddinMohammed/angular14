@@ -20,4 +20,7 @@ export class RegistrationsService {
   saveUserData(data:any){
     return this.http.post(this.url,data);
   }
+  getUsers(){    
+    return this.http.get(this.url);
+  }
 }
