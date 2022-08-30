@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { RegistrationsService } from '../registrations.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 @Input() menu:any;
-  constructor() { }
-
+  constructor(private registrationsService:RegistrationsService) { }
+rcvdData:any;
   ngOnInit(): void {
+
+    this.registrationsService.recvData.subscribe((d:any)=>{
+      console.log("Received Data:::",d)
+      this.rcvdData=d;
+    })
   }
 
 }
