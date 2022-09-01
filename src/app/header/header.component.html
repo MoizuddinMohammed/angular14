@@ -10,6 +10,9 @@
                     <li class="nav-item" *ngFor="let m of menu['header-menu']"><a class="nav-link" aria-current="page" routerLink="{{m.link}}">{{m.name}}</a></li>
                     <!-- <li class="nav-item"><a class="nav-link active" aria-current="page" routerLink="/">Home</a></li>-->
                 </ul>
+                <span class="ms-auto navbar-text" *ngIf="!rcvdData">
+                    <a routerLink="/login">Login</a> | <a routerLink="/">Register</a>
+                </span>
                 <a class="ms-auto text-white text-decoration-none" routerLink="/users" *ngIf="rcvdData">
                     {{rcvdData}} <img src="https://www.w3schools.com/bootstrap5/img_avatar1.png" alt="{{rcvdData}}" style="width:40px;" class="rounded-pill"> 
                 </a>
