@@ -11,6 +11,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 export class UsersComponent implements OnInit {
   faUserEdit = faUserEdit;
   faTrash=faTrash;
+  url='http://localhost:3000/users';
 
   constructor(private http: HttpClient) { }
 
@@ -23,7 +24,8 @@ export class UsersComponent implements OnInit {
     });
   }
   getUsers(){    
-    return this.http.get('./assets/json/users.json');
+    // return this.http.get('./assets/json/users.json');
+    return this.http.get(this.url);
   }  
 
 }
