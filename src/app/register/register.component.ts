@@ -60,7 +60,7 @@ export class RegisterComponent implements OnInit {
       console.log('Data Added::::',res);      
     });
     //console.log("Service DATA:::",this.registrationsService.listOfEmps)
-    this.router.navigate(['/','employees']);
+    this.router.navigate(['/','login']);
   }
   today:string=new Date().toISOString().slice(0,10);
   numberOnly(event:any): boolean {

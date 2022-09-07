@@ -2,14 +2,36 @@
   "users": [
     {
       "name": "Mohammed Moizuddin",
-      "username": "arbaazvillianz.av@gmail.com",
-      "password": "123456789",
-      "cpassword": "123456789",
+      "username": "abc@gmail.com",
+      "password": "123",
+      "cpassword": "123",
       "dob": "2022-08-02",
       "mobile": "8801372316",
       "address": "1-2-3/Sanjay ",
       "pincode": "500036",
       "id": 1
+    },
+    {
+      "name": "Mohammed Moiz",
+      "username": "moiz@gmail.com",
+      "password": "123456789",
+      "cpassword": "123456789",
+      "dob": "2022-08-29",
+      "mobile": "9876543210",
+      "address": "1-23-789-1112",
+      "pincode": "500036",
+      "id": 2
+    },
+    {
+      "name": "Arbaaz",
+      "username": "arbaaz@gmail.com",
+      "password": "123456789",
+      "cpassword": "123456789",
+      "dob": "2017-10-09",
+      "mobile": "9874521630",
+      "address": "1-23-7822-112",
+      "pincode": "500000",
+      "id": 3
     }
   ]
 }
