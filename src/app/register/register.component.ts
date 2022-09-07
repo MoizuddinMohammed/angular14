@@ -14,6 +14,7 @@ import { ConfirmPasswordValidator } from '../_helpers/must-match.validator';
 export class RegisterComponent implements OnInit {
   registerForm:any= FormGroup;
   submitted:boolean=false;
+  today:string=new Date().toISOString().slice(0,10);
 
   constructor(
     private formbuilder: FormBuilder,
@@ -46,12 +47,13 @@ export class RegisterComponent implements OnInit {
     console.log("Original DATA::",this.registerForm.value);
 
     let regObj={
-      address: this.registerForm.value.address,
+      name: this.registerForm.value.name,
+      username:this.registerForm.value.username,
+      password:this.registerForm.value.password,
       dob: this.registerForm.value.dob,
       mobile: this.registerForm.value.mobile,
-      name: this.registerForm.value.name,
+      address: this.registerForm.value.address,
       pincode: this.registerForm.value.pincode,
-      username:this.registerForm.value.username
   }
     //console.log("Modified DATA:::",regObj)
     // this.registrationsService.listOfEmps=regObj;
@@ -69,5 +71,6 @@ export class RegisterComponent implements OnInit {
       return false;
     }
     return true;
+
   }
 }
