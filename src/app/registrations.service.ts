@@ -23,4 +23,5 @@ export class RegistrationsService {
   getUsers(){    
     return this.http.get(this.url);
   }
+  isLoggedIn:boolean=false;
 }

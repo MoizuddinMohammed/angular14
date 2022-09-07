@@ -92,6 +92,7 @@ export class LoginComponent implements OnInit {
           if(user.username===this.loginForm.value.username && user.password===this.loginForm.value.password){
             console.log('Registered User::',user.username);
             this.registrationsService.setData(user.name);
+            this.registrationsService.isLoggedIn=true;
             this.router.navigate(['/','dashboard']);
           }else{
             this.invalidMsg=true;
