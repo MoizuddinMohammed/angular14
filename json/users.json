@@ -1,35 +1,34 @@
 {
   "users": [
     {
-      "name": "Mohammed Moizuddin",
+      "id": 1,
+      "username": "xyz@gmail.com",
+      "password": "123",
+      "name": "ABC",
+      "dob": "2022-09-08",
+      "mobile": "98989889",
+      "address": "LIVE APSS",
+      "pincode": "500013"
+    },
+    {
+      "id": 2,
       "username": "abc@gmail.com",
       "password": "123",
-      "dob": "2022-08-02",
-      "mobile": "8801372316",
-      "address": "1-2-3/Sanjay ",
-      "pincode": "500036",
-      "id": 1
+      "name": "ABC",
+      "dob": "2022-09-08",
+      "mobile": "98989889",
+      "address": "LIVE APSS",
+      "pincode": "500013"
     },
     {
-      "name": "Mohammed Moiz",
-      "username": "moiz@gmail.com",
-      "password": "123456789",
-      "dob": "2022-08-29",
-      "mobile": "9876543210",
-      "address": "1-23-789-1112",
-      "pincode": "500036",
-      "id": 2
-    },
-    {
-      "name": "Arbaaz",
-      "username": "arbaaz@gmail.com",
-      "password": "123456789",
-      "cpassword": "123456789",
-      "dob": "2017-10-09",
-      "mobile": "9874521630",
-      "address": "1-23-7822-112",
-      "pincode": "500000",
-      "id": 3
+      "id": 3,
+      "username": "pqr@gmail.com",
+      "password": "123",
+      "name": "ABC",
+      "dob": "2022-09-08",
+      "mobile": "98989889",
+      "address": "LIVE APSS",
+      "pincode": "500013"
     }
   ]
 }

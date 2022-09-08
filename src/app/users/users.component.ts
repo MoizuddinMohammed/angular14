@@ -14,7 +14,7 @@ import { RegistrationsService } from '../registrations.service';
 export class UsersComponent implements OnInit {
   faUserEdit = faUserEdit;
   faTrash = faTrash;
-  url = 'http://localhost:3000/users';
+  url = 'http://localhost:3000/users/';
   EditUser: any = FormGroup;
   submitted: boolean = false;
   today:string=new Date().toISOString().slice(0,10);
@@ -27,12 +27,10 @@ export class UsersComponent implements OnInit {
 
   userData: any = [];
   singleUserData:any=[];
+  searchUser: string='';
 
   ngOnInit(): void {
-    this.getUsers().subscribe(res => {
-      this.userData = res;
-      //console.log('JSon Data',this.userData);
-    });
+    this.getUsers();
 
     this.EditUser = this.formbuilder.group({
       name : ['', [Validators.required,Validators.pattern('^[a-zA-Z \-\']+')]],
@@ -44,7 +42,9 @@ export class UsersComponent implements OnInit {
     });
   }
   getUsers() {
-    // return this.http.get('./assets/json/users.json');
+    this.registrationsService.getUsers().subscribe((res)=>{
+      this.userData = res;
+    });
     return this.http.get(this.url);
   }
   get f(){return this.EditUser.controls}
@@ -64,18 +64,24 @@ export class UsersComponent implements OnInit {
       return;
     }
     console.log("Update DATA::",this.EditUser.value);
-    //this.singleUserData={
-      this.singleUserData.name = this.EditUser.value.name;
-      this.singleUserData.username = this.EditUser.value.username;
-      this.singleUserData.dob = this.EditUser.value.dob;
-      this.singleUserData.mobile = this.EditUser.value.mobile;
-      this.singleUserData.address = this.EditUser.value.address;
-      this.singleUserData.pincode = this.EditUser.value.pincode;
-    //}
+    const data =  {
+      id: this.singleUserData.id,
+      username:this.EditUser.value.username,
+      // password:"123",
+      name :this.EditUser.value.name,
+      dob :this.EditUser.value.dob,
+      mobile :this.EditUser.value.mobile,
+      address:this.EditUser.value.address, 
+      pincode :this.EditUser.value.pincode
+    }
     console.log("Updating DATA::",this.singleUserData);
-    this.registrationsService.updateUserData(this.singleUserData,this.singleUserData.id).subscribe((d:any) => {
-      alert("Data Updated");
+    this.registrationsService.updateUserData(data.id,data).subscribe((d:any) => {
       this.getUsers();
     })
+  }
+  deleteUser(id: any){
+    this.registrationsService.deleteUser(id).subscribe((d:any) => {
+      this.getUsers();
+    });
   }
 }
