@@ -22,10 +22,89 @@
             <td>{{usr.address}}</td>
             <td>{{usr.pincode}}</td>
             <td>
-                <button class="btn btn-info btn-sm me-2"><fa-icon [icon]="faUserEdit"></fa-icon></button>
+                <button class="btn btn-info btn-sm me-2" data-bs-toggle="modal" data-bs-target="#editUser" (click)="EditUserData(usr)"><fa-icon [icon]="faUserEdit"></fa-icon></button>
                 <button class="btn btn-danger btn-sm"><fa-icon [icon]="faTrash"></fa-icon></button>               
             </td>
         </tr>
     </tbody>
 </table>
+<!-- Modal -->
+<div class="modal fade" id="editUser" tabindex="-1" aria-labelledby="editUserLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form class="modal-content" [formGroup]="EditUser"  (ngSubmit)="updateUser()">
+            <div class="modal-header">
+            <h5 class="modal-title" id="editUserLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-4" >    
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" formControlName="name" placeholder="Enter your Name" [ngClass]="{'is-invalid': f.name.errors && submitted}" >
+                            <label for="floatingName">Name</label>
+                            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                <div *ngIf="f.name.errors.required">Name is required</div>
+                                <div *ngIf="f.name.errors.pattern">Enter only Alphabets</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="email" class="form-control" formControlName="username" placeholder="Enter Email Address" [ngClass]="{'is-invalid': f.username.errors && submitted}">
+                            <label for="floatingUsername">Username / Email</label>                    
+                            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                <div *ngIf="f.username.errors.required">Username is required</div>
+                                <div *ngIf="f.username.errors.email">Username must be a valid email address</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" formControlName="mobile" placeholder="Enter Mobile Number" maxlength="10" [ngClass]="{'is-invalid': f.mobile.errors && submitted}">
+                            <label for="floatingMobile">Mobile Number</label>                    
+                            <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                                <div *ngIf="f.mobile.errors.required">Mobile is required</div>
+                                <div *ngIf="f.mobile.errors.pattern">Enter only numbers</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <input type="date" class="form-control" formControlName="dob" placeholder="Enter your Date of Birth" max="{{today}}" [ngClass]="{'is-invalid': f.dob.errors && submitted}">
+                            <label for="floatingDob">Date of Birth</label>                    
+                            <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+                                <div *ngIf="f.dob.errors.required">Date of Birth is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">                
+                        <div class="form-floating">
+                            <input type="text" class="form-control" formControlName="pincode"  placeholder="Enter your pincode" maxlength="6" [ngClass]="{'is-invalid': f.pincode.errors && submitted}">
+                            <label for="floatingPincode">Pincode</label>                    
+                            <div *ngIf="submitted && f.pincode.errors" class="invalid-feedback">
+                                <div *ngIf="f.pincode.errors.required">Pincode is required</div>
+                                <div *ngIf="f.pincode.errors.minlength">Pincode must have at least 4 characters.</div>
+                                <div *ngIf="f.pincode.errors.maxlength">Pincode must have at most 6 characters.</div>
+                                <div *ngIf="f.pincode.errors.pattern">Pincode must have be only numbers.</div>
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" formControlName="address"  placeholder="Enter your address" [ngClass]="{'is-invalid': f.address.errors && submitted}">
+                            <label for="floatingAddress">Address</label>                    
+                            <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                                <div *ngIf="f.address.errors.required">Address is required</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+  </div>
 </div>

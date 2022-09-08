@@ -3,7 +3,7 @@ export function ConfirmPasswordValidator(controlName: string, matchingControlNam
   return (formGroup: FormGroup) => {
     let control = formGroup.controls[controlName];
     let matchingControl = formGroup.controls[matchingControlName]
-    console.log(matchingControl);
+    //console.log(matchingControl);
       if ( matchingControl.errors) {
         return;
     }
