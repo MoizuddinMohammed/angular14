@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'; 
 import {  HttpClientModule } from '@angular/common/http';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -23,6 +24,7 @@ import { ChatComponent } from './chat/chat.component';
 import { UsersComponent } from './users/users.component';
 import { NewsComponent } from './news/news.component';
 import { NewsHeadlinesComponent } from './news-headlines/news-headlines.component';
+import { SearchFilterPipe } from './search-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -42,12 +44,14 @@ import { NewsHeadlinesComponent } from './news-headlines/news-headlines.componen
     ChatComponent,
     UsersComponent,
     NewsComponent,
-    NewsHeadlinesComponent
+    NewsHeadlinesComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     FontAwesomeModule
   ],

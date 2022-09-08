@@ -23,12 +23,14 @@ export class RegistrationsService {
   getUsers(){    
     return this.http.get(this.url);
   }
-  updateUserData(data:any, id:number){
-    console.log("Update Service::::",data);
-    return this.http.put<any>(this.url + id, data).pipe(map((res: any) => {
-      return res
-    }))
-    //return this.http.post(this.url+id,data);
+  updateUserData(id: any, data: any){
+    console.log("calinng!!!!!",data);
+    console.log("ID!!!!!",id);
+    return this.http.patch<any>(this.url +id, data);
+    // return this.http.put<any>(this.url +data.id, data);
+  }
+  deleteUser(id:any){
+    return this.http.delete(this.url +id);
   }
   isLoggedIn:boolean=false;
 }
