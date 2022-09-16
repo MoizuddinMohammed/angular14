@@ -6,6 +6,8 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RegistrationsService } from '../registrations.service';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -14,7 +16,7 @@ import { RegistrationsService } from '../registrations.service';
 export class UsersComponent implements OnInit {
   faUserEdit = faUserEdit;
   faTrash = faTrash;
-  url = 'http://localhost:3000/users/';
+  url = environment.API_RL;
   EditUser: any = FormGroup;
   submitted: boolean = false;
   today:string=new Date().toISOString().slice(0,10);

@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Subject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegistrationsService {
-  url='http://localhost:3000/users/';
+  url = environment.API_RL;
   constructor(private http: HttpClient) { }
 
   private msgData:any=new Subject();
